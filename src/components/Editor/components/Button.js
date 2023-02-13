@@ -5,21 +5,21 @@ function Button(props) {
     title,
     alt,
     handleClick,
-    iconPosition = 'left',
-    className = '',
-    type = 'button',
+    iconPosition = "left",
+    className = "",
+    type = "button",
   } = props;
 
   return (
     <button
-      className={`Button ${className} ${alt ? 'alt' : ''}`}
+      className={`Button ${className} ${alt ? "alt" : ""}`}
       type={type}
       title={title}
       onClick={handleClick}
     >
-      {iconPosition === 'left' && icon}
+      {iconPosition === "left" && icon}
       {label}
-      {iconPosition === 'right' && icon}
+      {iconPosition === "right" && icon}
     </button>
   );
 }

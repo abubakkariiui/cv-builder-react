@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Editor from './components/Editor';
-import './styles/App.css';
+import { useState } from "react";
+import Editor from "./components/Editor";
+import "./styles/App.css";
 
 function App() {
   const [data, setData] = useState({});
