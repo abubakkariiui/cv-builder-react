@@ -10,7 +10,7 @@ function Visualizer(props) {
       className={`Visualizer ${state}`}
       onClick={() => toggleVisualizer(false)}
     >
-      <img src={image} />
+      <img src={image} alt="img-preview" />
     </div>
   );
 }

@@ -1,34 +1,28 @@
-import { useEffect, useState } from 'react';
-import uniqid from 'uniqid';
-import Form from './Form';
-import Navigator from './Navigator';
-import Button from './Button';
-import clamp from '../../../utils/clamp';
-import {
-  RiAddLine,
-  RiDeleteBin6Line,
-} from 'react-icons/ri';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import uniqid from "uniqid";
+import Form from "./Form";
+import Navigator from "./Navigator";
+import Button from "./Button";
+import clamp from "../../../utils/clamp";
+import { RiAddLine, RiDeleteBin6Line } from "react-icons/ri";
 
 function Experience(props) {
-  const {
-    className,
-    items,
-    setItems,
-    inputFields,
-  } = props;
+  const { className, items, setItems, inputFields } = props;
   const [index, setIndex] = useState(0);
   const [item, setItem] = useState({ ...items[index] });
   const createItem = () => {
-    setItems(prevItems => {
+    setItems((prevItems) => {
       prevItems.push({ key: uniqid() });
       return prevItems;
     });
-    setIndex(prevIndex => prevIndex + 1);
+    setIndex((prevIndex) => prevIndex + 1);
   };
   const deleteItem = () => {
-    const newIndex = index !== 0 ? clamp(0, index + 1, items.length - 2) : index;
+    const newIndex =
+      index !== 0 ? clamp(0, index + 1, items.length - 2) : index;
 
-    setItems(prevItems => {
+    setItems((prevItems) => {
       prevItems.splice(index, 1);
       return prevItems;
     });
@@ -40,12 +34,7 @@ function Experience(props) {
     }
   };
   const newButton = (
-    <Button
-      icon={<RiAddLine />}
-      label="New"
-      handleClick={createItem}
-      alt
-    />
+    <Button icon={<RiAddLine />} label="New" handleClick={createItem} alt />
   );
 
   useEffect(() => {
@@ -53,7 +42,7 @@ function Experience(props) {
     // console.log(index);
   }, [index]);
   useEffect(() => {
-    setItems(prevItems => {
+    setItems((prevItems) => {
       const newData = [...prevItems];
       newData[index] = item;
       return newData;

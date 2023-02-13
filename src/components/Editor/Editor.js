@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import { useState } from 'react';
 import uniqid from 'uniqid';
 import Info from "./components/Info";
