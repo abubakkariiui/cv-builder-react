@@ -1,4 +1,4 @@
-import camelCase from "camelcase";
+import camelCase from 'camelcase';
 
 function Input(props) {
   const {
@@ -6,20 +6,21 @@ function Input(props) {
     placeholder,
     data,
     handleInput,
-    id = camelCase(label),
-    type = "text",
+    value = '',
+    id = camelCase(label || ''),
+    type = 'text',
   } = props;
 
   return (
     <div className="Input">
-      <label htmlFor={id}>{label}</label>
-      {type === "textarea" ? (
+      {label && <label htmlFor={id}>{label}</label>}
+      {type === 'textarea' ? (
         <textarea
           id={id}
           name={id}
           placeholder={placeholder}
-          value={data?.[id] || ""}
-          onInput={(e) => handleInput(id, e.target.value)}
+          value={data?.[id] || value}
+          onInput={e => handleInput(id, e.target.value)}
         />
       ) : (
         <input
@@ -27,8 +28,8 @@ function Input(props) {
           type={type}
           name={id}
           placeholder={placeholder}
-          value={data?.[id] || ""}
-          onInput={(e) => handleInput(id, e.target.value)}
+          value={data?.[id] || value}
+          onInput={e => handleInput(id, e.target.value)}
         />
       )}
     </div>

@@ -9,7 +9,7 @@
   background-color: var(--bg-color);
   color: white;
   border-radius: var(--radius);
-  font-family: "Kumbh Sans";
+  font-family: 'Kumbh Sans';
 }
 
 .Editor h3 {
@@ -17,26 +17,42 @@
   font-size: 22px;
 }
 
+.Editor .Container {
+  margin-inline: -25px;
+  padding-inline: 25px;
+  height: 386px;
+  overflow-y: auto;
+}
+
 .Editor .Navigator {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  animation: fadeMoveIn .5s ease forwards;
+}
+
+.Editor .Container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Editor>.Navigator {
   width: 100%;
   padding: 25px;
   position: absolute;
   left: 0;
   bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  animation: fadeMoveIn 0.5s ease forwards;
 }
 
-.Editor .Navigator .Button,
-.Editor .Navigator .Spacer {
+.Navigator .Button,
+.Navigator .Spacer {
   max-width: 130px;
   width: 40%;
 }
 
-.Editor .Navigator .Dots {
-  height: 44px;
+.Navigator .Dots {
+  height: 40px;
   margin-inline: 8px;
   display: flex;
   align-items: center;
@@ -44,15 +60,15 @@
   gap: 7px;
 }
 
-.Editor .Navigator .Dot {
+.Navigator .Dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background-color: hsl(0, 0%, 40%);
-  transition: background-color 0.4s, transform 0.4s;
+  transition: background-color .4s, transform .4s;
 }
 
-.Editor .Navigator .Dot.active {
+.Navigator .Dot.active {
   background-color: var(--accent-color);
   transform: scale(1.5);
 }
@@ -74,8 +90,8 @@ input {
   border: 1px solid transparent;
   border-radius: var(--radius);
   font-size: 14px;
-  font-family: "Poppins";
-  transition: all 0.3s, transform 0.2s;
+  font-family: 'Poppins';
+  transition: all .3s, transform .2s;
 }
 
 textarea {
@@ -97,7 +113,7 @@ input:focus {
 
 textarea:active,
 input:active {
-  transform: scale(0.975);
+  transform: scale(.975);
 }
 
 form {
@@ -106,9 +122,44 @@ form {
   gap: 14px 12px;
 }
 
+.Container>.Button.Delete,
+.Container>.Button.New {
+  height: 40px;
+  width: 40px;
+  margin: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Container>.Button.New {
+  width: 96px;
+}
+
+.Skills {
+  margin-top: 10px;
+  grid-template-columns: 1fr;
+  row-gap: 16px;
+}
+
+.Skills input {
+  margin: 0;
+}
+
+.Skill {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  gap: 12px;
+}
+
 .Info .Input:nth-child(3),
 .Info .Input:last-child,
 .Contact .Input:first-child,
-.Contact .Input:nth-child(2) {
+.Contact .Input:nth-child(2),
+.Work .Input:last-child {
   grid-column: 1 / 3;
+}
+
+.Work textarea {
+  height: 84px !important;
 }

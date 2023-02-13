@@ -1,50 +1,41 @@
-import uniqid from "uniqid";
-import Input from "./Input";
+import { useEffect, useState } from 'react';
+import uniqid from 'uniqid';
+import Form from "./Form";
 
 const inputFields = [
   {
-    label: "Website",
-    placeholder: "annajohnson.com",
+    label: 'Website',
+    placeholder: 'annajohnson.com',
   },
   {
-    label: "Email",
-    placeholder: "annajohnson@email.com",
+    label: 'Email',
+    placeholder: 'annajohnson@email.com',
   },
   {
-    label: "Location",
-    placeholder: "New York, NY",
+    label: 'Location',
+    placeholder: 'New York, NY',
   },
   {
-    label: "Phone",
-    placeholder: "555-555-5555",
+    label: 'Phone',
+    placeholder: '555-555-5555',
   },
 ];
-inputFields.forEach((field) => (field.key = uniqid()));
+inputFields.forEach(field => field.key = uniqid());
 
 function Contact({ data, setData }) {
-  const handleInput = (key, value) => {
-    setData({
-      ...data,
-      contact: {
-        ...data?.contact,
-        [key]: value,
-      },
-    });
-  };
+  const [contact, setContact] = useState({ ...data.contact });
+
+  useEffect(() => {
+    setData(prevData => ({ ...prevData, contact }));
+  }, [contact]);
 
   return (
-    <form className="Contact">
-      {inputFields.map(({ label, placeholder, type, key }) => (
-        <Input
-          key={key}
-          label={label}
-          placeholder={placeholder}
-          type={type}
-          data={data.contact}
-          handleInput={handleInput}
-        />
-      ))}
-    </form>
+    <Form
+      className="Contact"
+      inputFields={inputFields}
+      data={contact}
+      setData={setContact}
+    />
   );
 }
 

@@ -1,0 +1,178 @@
+.Preview {
+  min-height: 1250px;
+  max-height: 1250px;
+  min-width: 900px;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  grid-template-rows: 220px 1fr;
+  font-family: 'Work Sans';
+}
+
+.PreviewContainer {
+  min-width: 940px;
+  height: min(1300px, 100vh);
+  margin-inline: -20px;
+  padding: 25px 20px;
+  overflow-y: auto;
+}
+
+header {
+  width: 100%;
+  grid-column: 1 / 3;
+  background-color: white;
+  color: var(--dark-text-color);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  text-align: center;
+}
+
+header h1,
+header h2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  height: 170px;
+  gap: 40px;
+  font-size: 46px;
+  font-weight: 300;
+  letter-spacing: 14px;
+}
+
+header .firstName {
+  font-weight: 500;
+}
+
+header h2 {
+  height: 50px;
+  background-color: #e7e8ea;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+main,
+.Sidebar {
+  padding: 45px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.Sidebar {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-bottom-left-radius: var(--radius);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+section.Skills {
+  margin: 0;
+}
+
+main h3,
+section h3 {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 5px;
+}
+
+.Sidebar section h3 {
+  color: white;
+}
+
+section.Education h3 {
+  margin-bottom: 12px;
+}
+
+section p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+main {
+  background-color: white;
+  color: var(--dark-text-color);
+  border-bottom-right-radius: var(--radius);
+}
+
+main section>h3 {
+  position: relative;
+  color: black;
+}
+
+main section>h3::after {
+  content: '';
+  width: 60px;
+  height: 2px;
+  position: absolute;
+  left: 1px;
+  bottom: -16px;
+  display: block;
+  background-color: gray;
+  border-radius: 1px;
+}
+
+.Detail {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.Detail span,
+.Detail svg {
+  color: white;
+}
+
+.Detail span {
+  margin-inline: 2px 4px;
+  transform: scale(1.6);
+}
+
+.ExperienceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ExperienceItem>* {
+  line-height: 1.5;
+}
+
+.ExperienceItem h4 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.Sidebar .ExperienceItem h4 {
+  color: white;
+}
+
+main .ExperienceItem h4 {
+  color: black;
+}
+
+.ExperienceItem h5 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ExperienceItem span {
+  display: inline;
+}
+
+.ExperienceItem p {
+  font-size: 13px;
+}
