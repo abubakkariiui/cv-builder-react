@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 290px 1fr;
   grid-template-rows: 220px 1fr;
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
 }
 
 .PreviewContainer {
@@ -78,7 +78,10 @@ section {
 section.Skills {
   margin: 0;
 }
-
+section.Education,
+section.WorkExperience {
+  gap: 30px;
+}
 main h3,
 section h3 {
   margin-bottom: 16px;
@@ -87,12 +90,13 @@ section h3 {
   letter-spacing: 5px;
 }
 
-.Sidebar section h3 {
-  color: white;
+section.Education h3,
+section.WorkExperience h3 {
+  margin-bottom: 0;
 }
 
-section.Education h3 {
-  margin-bottom: 12px;
+.Sidebar section h3 {
+  color: white;
 }
 
 section p {
@@ -106,13 +110,13 @@ main {
   border-bottom-right-radius: var(--radius);
 }
 
-main section>h3 {
+main section > h3 {
   position: relative;
   color: black;
 }
 
-main section>h3::after {
-  content: '';
+main section > h3::after {
+  content: "";
   width: 60px;
   height: 2px;
   position: absolute;
@@ -147,7 +151,7 @@ main section>h3::after {
   gap: 2px;
 }
 
-.ExperienceItem>* {
+.ExperienceItem > * {
   line-height: 1.5;
 }
 

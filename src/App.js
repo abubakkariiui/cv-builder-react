@@ -1,15 +1,18 @@
-import { createRef, useState } from 'react';
-import { useTransition } from 'react-transition-state';
-import { useScreenshot } from 'use-react-screenshot';
-import uniqid from 'uniqid';
-import Editor from './components/Editor';
-import Preview from './components/Preview';
-import Visualizer from './components/Visualizer';
-import './styles/App.css';
+import { createRef, useState } from "react";
+import { useTransition } from "react-transition-state";
+import { useScreenshot } from "use-react-screenshot";
+import uniqid from "uniqid";
+import Editor from "./components/Editor";
+import Preview from "./components/Preview";
+import Visualizer from "./components/Visualizer";
+import generateData from "./utils/generateData";
+import "./styles/App.css";
 
 function App() {
-  const createItems = count => {
-    return Array(count).fill().map(() => ({ key: uniqid() }));
+  const createItems = (count) => {
+    return Array(count)
+      .fill()
+      .map(() => ({ key: uniqid() }));
   };
   const [data, setData] = useState({
     info: {},
@@ -19,7 +22,10 @@ function App() {
     skills: createItems(3),
   });
   const ref = createRef(null);
-  const [image, takeScreenshot] = useScreenshot({ type: "image/png", quality: 1.0 });
+  const [image, takeScreenshot] = useScreenshot({
+    type: "image/png",
+    quality: 1.0,
+  });
   const getImage = () => takeScreenshot(ref.current);
   const [transitionState, toggleVisualizer] = useTransition({ timeout: 300 });
 
@@ -29,12 +35,10 @@ function App() {
         data={data}
         setData={setData}
         getImage={getImage}
+        autofill={() => setData(generateData())}
         toggleVisualizer={toggleVisualizer}
       />
-      <Preview
-        data={data}
-        reference={ref}
-      />
+      <Preview data={data} reference={ref} />
       <Visualizer
         state={transitionState}
         image={image}

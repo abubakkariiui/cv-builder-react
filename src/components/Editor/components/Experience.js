@@ -39,7 +39,6 @@ function Experience(props) {
 
   useEffect(() => {
     setItem({ ...items[index] });
-    // console.log(index);
   }, [index]);
   useEffect(() => {
     setItems((prevItems) => {

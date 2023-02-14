@@ -1,36 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import uniqid from 'uniqid';
-import Input from './Input';
-import Button from './Button';
-import {
-  RiAddLine,
-  RiDeleteBin6Line,
-} from 'react-icons/ri';
-import { useEffect, useState } from 'react';
+import uniqid from "uniqid";
+import Input from "./Input";
+import Button from "./Button";
+import { RiAddLine, RiDeleteBin6Line } from "react-icons/ri";
+import { useEffect, useState } from "react";
 
 const maxSkills = 10;
 const placeholders = [
-  'Problem Solving',
-  'Communication',
-  'Teamwork',
-  'Leadership',
-  'Critical Thinking',
+  "Problem Solving",
+  "Communication",
+  "Teamwork",
+  "Leadership",
+  "Critical Thinking",
 ];
 
 function Skills({ data, setData }) {
   const [skills, setSkills] = useState([...data.skills]);
   const createItem = () => {
-    setSkills(prevSkills => [...prevSkills, { key: uniqid() }]);
+    setSkills((prevSkills) => [...prevSkills, { key: uniqid() }]);
   };
-  const deleteItem = index => {
-    setSkills(prevSkills => {
+  const deleteItem = (index) => {
+    setSkills((prevSkills) => {
       const newSkills = [...prevSkills];
       newSkills.splice(index, 1);
       return newSkills;
     });
   };
   const handleInput = (index, value) => {
-    setSkills(prevSkills => {
+    setSkills((prevSkills) => {
       const newSkills = [...prevSkills];
       newSkills[index] = { ...newSkills[index], name: value };
       return newSkills;
@@ -38,7 +35,7 @@ function Skills({ data, setData }) {
   };
 
   useEffect(() => {
-    setData(prevData => ({ ...prevData, skills }));
+    setData((prevData) => ({ ...prevData, skills }));
   }, [skills]);
 
   return (
