@@ -8,7 +8,12 @@ import Work from "./components/Work";
 import Skills from "./components/Skills";
 import Navigator from "./components/Navigator";
 import Button from "./components/Button";
-import { RiSaveLine, RiEditLine } from "react-icons/ri";
+import {
+  RiSaveLine,
+  RiEditLine,
+  RiEyeLine,
+  RiEditBoxLine,
+} from "react-icons/ri";
 import "../../styles/Editor.css";
 
 const editors = [
@@ -21,12 +26,10 @@ const editors = [
 editors.forEach((editor) => (editor.key = uniqid()));
 
 function Editor(props) {
-  const { data, setData, autofill, getImage, toggleVisualizer } = props;
+  const { data, setData, autofill, getImage, togglePreview } = props;
   const [activeEditor, setActiveEditor] = useState(0);
-  const save = () => {
-    getImage();
-    toggleVisualizer();
-  };
+  const [isPreviewVisible, togglePreviewVisible] = useState(false);
+
   const autofillButton = (
     <Button
       icon={<RiEditLine />}
@@ -38,7 +41,7 @@ function Editor(props) {
     />
   );
   const saveButton = (
-    <Button icon={<RiSaveLine />} label="Save" handleClick={save} />
+    <Button icon={<RiSaveLine />} label="Save" handleClick={getImage} />
   );
   let editor;
 
@@ -70,6 +73,16 @@ function Editor(props) {
         items={editors}
         firstButton={autofillButton}
         lastButton={saveButton}
+      />
+      <Button
+        className="PreviewButton"
+        icon={isPreviewVisible ? <RiEditBoxLine /> : <RiEyeLine />}
+        label={isPreviewVisible ? "Editor" : "Preview"}
+        handleClick={() => {
+          togglePreviewVisible((prevState) => !prevState);
+          togglePreview();
+        }}
+        alt
       />
     </div>
   );
