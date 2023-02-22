@@ -1,13 +1,12 @@
 import Input from "./Input";
 
 function Form(props) {
-  const { className, inputFields, data, setData } = props;
-  const handleInput = (key, value) => {
-    setData((prevData) => ({
-      ...prevData,
-      [key]: value,
-    }));
-  };
+  const {
+    className,
+    inputFields,
+    data,
+    handleInput,
+  } = props;
 
   return (
     <form className={className}>

@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
 import uniqid from 'uniqid';
 import Form from "./Form";
 
@@ -24,18 +22,17 @@ const inputFields = [
 inputFields.forEach(field => field.key = uniqid());
 
 function Contact({ data, setData }) {
-  const [contact, setContact] = useState({ ...data.contact });
-
-  useEffect(() => {
-    setData(prevData => ({ ...prevData, contact }));
-  }, [contact]);
+  const { contact } = data;
+  const handleInput = (key, value) => {
+    setData({ ...data, contact: { ...contact, [key]: value } });
+  };
 
   return (
     <Form
       className="Contact"
       inputFields={inputFields}
       data={contact}
-      setData={setContact}
+      handleInput={handleInput}
     />
   );
 }

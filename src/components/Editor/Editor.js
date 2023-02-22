@@ -1,35 +1,40 @@
-/* eslint-disable default-case */
-import { useState } from "react";
-import uniqid from "uniqid";
+import { useState } from 'react';
+import uniqid from 'uniqid';
 import Info from "./components/Info";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
 import Work from "./components/Work";
 import Skills from "./components/Skills";
 import Navigator from "./components/Navigator";
-import Button from "./components/Button";
+import Button from "../Button";
+import GithubButton from "./components/GithubButton";
 import {
-  RiSaveLine,
   RiEditLine,
+  RiSaveLine,
   RiEyeLine,
-  RiEditBoxLine,
-} from "react-icons/ri";
-import "../../styles/Editor.css";
+  RiCodeLine,
+} from 'react-icons/ri';
+import '../../styles/Editor.css';
 
 const editors = [
-  { name: "Info" },
-  { name: "Contact" },
-  { name: "Education" },
-  { name: "Work" },
-  { name: "Skills" },
+  { name: 'Info' },
+  { name: 'Contact' },
+  { name: 'Education' },
+  { name: 'Work' },
+  { name: 'Skills' },
 ];
-editors.forEach((editor) => (editor.key = uniqid()));
+editors.forEach(editor => editor.key = uniqid());
 
 function Editor(props) {
-  const { data, setData, autofill, getImage, togglePreview } = props;
+  const {
+    data,
+    setData,
+    autofill,
+    getImage,
+    togglePreview,
+  } = props;
   const [activeEditor, setActiveEditor] = useState(0);
   const [isPreviewVisible, togglePreviewVisible] = useState(false);
-
   const autofillButton = (
     <Button
       icon={<RiEditLine />}
@@ -41,26 +46,31 @@ function Editor(props) {
     />
   );
   const saveButton = (
-    <Button icon={<RiSaveLine />} label="Save" handleClick={getImage} />
+    <Button
+      icon={<RiSaveLine />}
+      label="Save"
+      handleClick={getImage}
+    />
   );
   let editor;
 
   switch (editors[activeEditor].name) {
-    case "Info":
+    case 'Info':
       editor = <Info data={data} setData={setData} />;
       break;
-    case "Contact":
+    case 'Contact':
       editor = <Contact data={data} setData={setData} />;
       break;
-    case "Education":
+    case 'Education':
       editor = <Education data={data} setData={setData} />;
       break;
-    case "Work":
+    case 'Work':
       editor = <Work data={data} setData={setData} />;
       break;
-    case "Skills":
+    case 'Skills':
       editor = <Skills data={data} setData={setData} />;
       break;
+    default:
   }
 
   return (
@@ -74,15 +84,15 @@ function Editor(props) {
         firstButton={autofillButton}
         lastButton={saveButton}
       />
+      <GithubButton username="abubakkariiui" />
       <Button
         className="PreviewButton"
-        icon={isPreviewVisible ? <RiEditBoxLine /> : <RiEyeLine />}
-        label={isPreviewVisible ? "Editor" : "Preview"}
+        icon={isPreviewVisible ? <RiCodeLine /> : <RiEyeLine />}
+        label={isPreviewVisible ? 'Editor' : 'Preview'}
         handleClick={() => {
-          togglePreviewVisible((prevState) => !prevState);
+          togglePreviewVisible(prevState => !prevState);
           togglePreview();
         }}
-        alt
       />
     </div>
   );

@@ -1,10 +1,6 @@
 .Preview {
-  height: 1250px;
-  width: 900px;
-  display: grid;
-  grid-template-columns: 290px 1fr;
-  grid-template-rows: 220px 1fr;
-  font-family: "Work Sans";
+  position: relative;
+  font-family: 'Work Sans';
 }
 
 .PreviewContainer {
@@ -12,8 +8,34 @@
   max-width: 55vw;
   min-width: 55vw;
 }
+
 .PreviewContent {
-  padding-block: 20px;
+  padding-block: 20px !important;
+}
+
+.Zoom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 45px);
+  z-index: 2;
+}
+
+.Zoom .Button {
+  height: 40px;
+  width: 40px;
+  box-shadow: var(--shadow);
+}
+
+.Resume {
+  height: 1250px;
+  width: 900px;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  grid-template-rows: 220px 1fr;
 }
 
 header {
@@ -77,10 +99,12 @@ section {
 section.Skills {
   margin: 0;
 }
+
 section.Education,
 section.WorkExperience {
   gap: 30px;
 }
+
 main h3,
 section h3 {
   margin-bottom: 16px;
@@ -109,13 +133,13 @@ main {
   border-bottom-right-radius: var(--radius);
 }
 
-main section > h3 {
+main section>h3 {
   position: relative;
   color: black;
 }
 
-main section > h3::after {
-  content: "";
+main section>h3::after {
+  content: '';
   width: 60px;
   height: 2px;
   position: absolute;
@@ -150,7 +174,7 @@ main section > h3::after {
   gap: 2px;
 }
 
-.ExperienceItem > * {
+.ExperienceItem>* {
   line-height: 1.5;
 }
 
@@ -179,23 +203,32 @@ main .ExperienceItem h4 {
 .ExperienceItem p {
   font-size: 13px;
 }
+
 @media (max-width: 1000px) {
-  .PreviewContainer {
-    min-width: 100vw;
-    max-width: 100vw;
-    position: fixed !important;
-    bottom: 0;
+  .Preview {
     background-color: black;
-    transition: opacity 0.3s;
+    transition: opacity .3s;
+    position: fixed;
+    bottom: 0;
   }
 
-  .PreviewContainer.exiting,
-  .PreviewContainer.exited {
+  .Preview.exiting,
+  .Preview.exited {
     opacity: 0;
     pointer-events: none;
   }
 
+  .PreviewContainer {
+    min-width: 100vw;
+    max-width: 100vw;
+  }
+
   .PreviewContent {
     padding: 20px !important;
+  }
+
+  .Zoom {
+    top: 20px;
+    bottom: auto;
   }
 }

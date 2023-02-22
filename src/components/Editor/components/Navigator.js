@@ -1,6 +1,8 @@
-/* eslint-disable no-mixed-operators */
-import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
-import Button from "./Button";
+import Button from '../../Button';
+import {
+  RiArrowLeftSLine,
+  RiArrowRightSLine,
+} from 'react-icons/ri';
 
 function Navigator(props) {
   const {
@@ -17,39 +19,35 @@ function Navigator(props) {
 
   return (
     <div className="Navigator">
-      {(items[previousIndex] && (
+      {items[previousIndex] && (
         <Button
           icon={<RiArrowLeftSLine />}
-          label={items[previousIndex]?.name || "Previous"}
+          label={items[previousIndex]?.name || 'Previous'}
           handleClick={() => setIndex(previousIndex)}
           alt
         />
-      )) ||
-        firstButton ||
-        spacer}
+      ) || firstButton || spacer}
       {useDots && (
         <div className="Dots">
           {items.map(({ key }, i) => (
             <div
               key={`${key}-dot`}
-              className={`Dot ${index === i ? "active" : ""}`}
+              className={`Dot ${index === i ? 'active' : ''}`}
               title={items[i].name}
               onClick={() => setIndex(i)}
             />
           ))}
         </div>
       )}
-      {(items[nextIndex] && (
+      {items[nextIndex] && (
         <Button
           icon={<RiArrowRightSLine />}
           iconPosition="right"
-          label={items[nextIndex]?.name || "Next"}
+          label={items[nextIndex]?.name || 'Next'}
           handleClick={() => setIndex(nextIndex)}
           alt
         />
-      )) ||
-        lastButton ||
-        spacer}
+      ) || lastButton || spacer}
     </div>
   );
 }

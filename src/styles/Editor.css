@@ -2,6 +2,7 @@
   height: 540px;
   width: 520px;
   margin-block: 20px;
+  margin-bottom: 80px;
   padding: 25px;
   padding-bottom: 80px;
   position: relative;
@@ -11,7 +12,7 @@
   background-color: var(--bg-color);
   color: white;
   border-radius: var(--radius);
-  font-family: "Kumbh Sans";
+  font-family: 'Kumbh Sans';
 }
 
 .Editor h3 {
@@ -22,7 +23,6 @@
 .Editor .Container {
   margin-inline: -25px;
   padding-inline: 25px;
-  /* height: 386px; */
   overflow-y: auto;
 }
 
@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  animation: fadeMoveIn 0.5s ease forwards;
+  animation: fadeMoveIn .5s ease forwards;
 }
 
 .Editor .Container {
@@ -39,9 +39,10 @@
   gap: 20px;
 }
 
-.Editor > .Navigator {
+.Editor>.Navigator {
   width: 100%;
-  padding: 25px;
+  padding-inline: 25px;
+  padding-bottom: 25px;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -63,11 +64,12 @@
 }
 
 .Navigator .Dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: hsl(0, 0%, 40%);
-  transition: background-color 0.4s, transform 0.4s;
+  cursor: pointer;
+  transition: background-color .4s, transform .4s;
 }
 
 .Navigator .Dot.active {
@@ -75,14 +77,21 @@
   transform: scale(1.4);
 }
 
+.Editor .GithubButton {
+  width: 150px;
+  position: absolute;
+  left: calc(50% - 65px);
+  bottom: -60px;
+  text-decoration: none;
+}
+
 .Editor .PreviewButton {
   width: 130px;
-  margin-bottom: 20px;
-  display: none;
   position: fixed;
-  bottom: 0;
+  bottom: 20px;
   left: calc(50% - 65px);
   z-index: 2;
+  display: none;
   box-shadow: var(--shadow);
 }
 
@@ -103,8 +112,8 @@ input {
   border: 1px solid transparent;
   border-radius: var(--radius);
   font-size: 14px;
-  font-family: "Poppins";
-  transition: all 0.3s, transform 0.2s;
+  font-family: 'Poppins';
+  transition: all .3s, transform .2s;
 }
 
 textarea {
@@ -126,7 +135,7 @@ input:focus {
 
 textarea:active,
 input:active {
-  transform: scale(0.975);
+  transform: scale(.975);
 }
 
 form {
@@ -135,8 +144,8 @@ form {
   gap: 14px 12px;
 }
 
-.Container > .Button.Delete,
-.Container > .Button.New {
+.Container>.Button.Delete,
+.Container>.Button.New {
   height: 40px;
   width: 40px;
   margin: 25px;
@@ -145,7 +154,7 @@ form {
   right: 0;
 }
 
-.Container > .Button.New {
+.Container>.Button.New {
   width: 96px;
 }
 
@@ -178,21 +187,17 @@ form {
 }
 
 @media (max-width: 1000px) {
-  .Editor {
-    margin-bottom: 75px;
-  }
-
   .Editor .PreviewButton {
     display: flex;
   }
 }
 
 @media (max-width: 440px) {
-  .Editor > .Navigator .Dots {
+  .Editor>.Navigator .Dots {
     display: none;
   }
 
-  .Editor > .Navigator .Button {
+  .Editor>.Navigator .Button {
     width: 100%;
   }
 }
